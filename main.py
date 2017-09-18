@@ -30,14 +30,15 @@ if __name__ == "__main__":
 
     myDat, labels = tree.CreatDataSet()
     # myDat[0][-1] = 'maybe'
-    print(myDat)
-    # tmp1 = tree.SplitDataSet(myDat, 1, 1)
-    # tmp2 = tree.SplitDataSet(myDat, 1, 0)
-    temp = tree.ChooseBesttoSplit(myDat)
-    # tmp = tree.CalShannonEnt(myDat)
-    # print(tmp1, '\n', tmp2)
-    print(temp)
-
+    # print(myDat)
+    # # tmp1 = tree.SplitDataSet(myDat, 1, 1)
+    # # tmp2 = tree.SplitDataSet(myDat, 1, 0)
+    # temp = tree.ChooseBesttoSplit(myDat)
+    # # tmp = tree.CalShannonEnt(myDat)
+    # # print(tmp1, '\n', tmp2)
+    # print(temp)
+    myTree = tree.createTree(myDat, labels)
+    print(myTree)
 
 
 
