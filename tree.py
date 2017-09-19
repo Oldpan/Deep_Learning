@@ -83,3 +83,5 @@ def createTree(dataSet,labels):
         subLabels = labels[:]       #copy all of labels, so trees don't mess up existing labels
         myTree[bestFeatLabel][value] = createTree(SplitDataSet(dataSet, bestFeat, value),subLabels)
     return myTree
+
+

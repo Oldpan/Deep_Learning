@@ -1,8 +1,9 @@
 import KNN
 import tree
+import bayes
 import matplotlib
 import matplotlib.pyplot as plt
-import numpy as np
+from numpy import *
 
 
 if __name__ == "__main__":
@@ -28,7 +29,7 @@ if __name__ == "__main__":
 
     # KNN.datingClassTest()
 
-    myDat, labels = tree.CreatDataSet()
+    # myDat, labels = tree.CreatDataSet()
     # myDat[0][-1] = 'maybe'
     # print(myDat)
     # # tmp1 = tree.SplitDataSet(myDat, 1, 1)
@@ -37,8 +38,17 @@ if __name__ == "__main__":
     # # tmp = tree.CalShannonEnt(myDat)
     # # print(tmp1, '\n', tmp2)
     # print(temp)
-    myTree = tree.createTree(myDat, labels)
-    print(myTree)
+    # myTree = tree.createTree(myDat, labels)
+    # print(myTree)
+    listofPosts, listClasses = bayes.LoadDataSet()
+    myVocabList = bayes.CreateVocabList(listofPosts)
+    trainMat = []
+    for postinDoc in listofPosts:
+        trainMat.append(bayes.SetOfWords2Vec(myVocabList, postinDoc))
+    p0v, p1v, pAb = bayes.trainNB0(trainMat, listofPosts)
+    # bayes.SetOfWords2Vec(myVocabList, listofPosts[0])
+
+
 
 
 
