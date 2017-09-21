@@ -1,9 +1,11 @@
-import KNN
-import tree
-import bayes
 import matplotlib
 import matplotlib.pyplot as plt
 from numpy import *
+
+import KNN
+import tree
+import bayes
+import logRegres
 
 
 if __name__ == "__main__":
@@ -40,13 +42,25 @@ if __name__ == "__main__":
     # print(temp)
     # myTree = tree.createTree(myDat, labels)
     # print(myTree)
-    listofPosts, listClasses = bayes.LoadDataSet()
-    myVocabList = bayes.CreateVocabList(listofPosts)
-    trainMat = []
-    for postinDoc in listofPosts:
-        trainMat.append(bayes.SetOfWords2Vec(myVocabList, postinDoc))
-    p0v, p1v, pAb = bayes.trainNB0(trainMat, listofPosts)
+    # listofPosts, listClasses = bayes.LoadDataSet()
+    # myVocabList = bayes.CreateVocabList(listofPosts)
+    # trainMat = []
+    # for postinDoc in listofPosts:
+    #     trainMat.append(bayes.SetOfWords2Vec(myVocabList, postinDoc))
+    # p0v, p1v, pAb = bayes.trainNB0(trainMat, listofPosts)
+
     # bayes.SetOfWords2Vec(myVocabList, listofPosts[0])
+
+    dataArr, labelMat = logRegres.LoadDataSet()
+    # weights = logRegres.GradAscent(dataArr, labelMat)
+    weights = logRegres.StocGradAscent0(array(dataArr), labelMat)
+
+    logRegres.PlotBestFit(weights)
+
+
+
+
+
 
 
 
