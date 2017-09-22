@@ -1,9 +1,11 @@
-import KNN
-import tree
-import bayes
 import matplotlib
 import matplotlib.pyplot as plt
 from numpy import *
+
+import KNN
+import tree
+import bayes
+import logRegres
 
 
 if __name__ == "__main__":
@@ -23,34 +25,41 @@ if __name__ == "__main__":
     # plt.show()
 
     # normMat, ranges, minVals = KNN.autoNorm(datingDataMat)
+    # print(normMat)
+    # print(ranges)
+    # print(minVals)
 
     # KNN.datingClassTest()
 
     # myDat, labels = tree.CreatDataSet()
     # myDat[0][-1] = 'maybe'
-
+    # print(myDat)
     # # tmp1 = tree.SplitDataSet(myDat, 1, 1)
     # # tmp2 = tree.SplitDataSet(myDat, 1, 0)
     # temp = tree.ChooseBesttoSplit(myDat)
     # # tmp = tree.CalShannonEnt(myDat)
     # # print(tmp1, '\n', tmp2)
-
+    # print(temp)
     # myTree = tree.createTree(myDat, labels)
-
+    # print(myTree)
     # listofPosts, listClasses = bayes.LoadDataSet()
     # myVocabList = bayes.CreateVocabList(listofPosts)
     # trainMat = []
     # for postinDoc in listofPosts:
     #     trainMat.append(bayes.SetOfWords2Vec(myVocabList, postinDoc))
-    # p0V, p1V, pAb = bayes.trainNB0(trainMat, listClasses)
-    # testEntry = ['dog', 'my', 'worthless']
-    # thisDoc = array(bayes.SetOfWords2Vec(myVocabList, testEntry))
-    # print(testEntry, 'classified as: ', bayes.ClassifyNB(thisDoc, p0V, p1V, pAb))
-    # testEntry = ['stupid', 'garbage']
-    # thisDoc = array(bayes.SetOfWords2Vec(myVocabList, testEntry))
-    # print(testEntry, 'classified as: ', bayes.ClassifyNB(thisDoc, p0V, p1V, pAb))
+    # p0v, p1v, pAb = bayes.trainNB0(trainMat, listofPosts)
 
-    bayes.SpamTest()
+    # bayes.SetOfWords2Vec(myVocabList, listofPosts[0])
+
+    dataArr, labelMat = logRegres.LoadDataSet()
+    # weights = logRegres.GradAscent(dataArr, labelMat)
+    weights = logRegres.StocGradAscent0(array(dataArr), labelMat)
+
+    logRegres.PlotBestFit(weights)
+
+
+
+
 
 
 
