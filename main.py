@@ -6,6 +6,8 @@ import KNN
 import tree
 import bayes
 import logRegres
+import svmMLiA
+import test
 
 
 if __name__ == "__main__":
@@ -51,11 +53,18 @@ if __name__ == "__main__":
 
     # bayes.SetOfWords2Vec(myVocabList, listofPosts[0])
 
-    dataArr, labelMat = logRegres.LoadDataSet()
+    # dataArr, labelMat = logRegres.LoadDataSet()
     # weights = logRegres.GradAscent(dataArr, labelMat)
-    weights = logRegres.StocGradAscent0(array(dataArr), labelMat)
+    # weights = logRegres.StocGradAscent1(array(dataArr), labelMat, 1000)
 
-    logRegres.PlotBestFit(weights)
+    # logRegres.PlotBestFit(weights)
+    # logRegres.PlotBestFit(weights.getA())
+
+    # dataArr, labelArr = svmMLiA.LoadDataSet("machinelearninginaction/Ch06/testSet.txt")
+    # b, alphas = svmMLiA.SmoSimple(dataArr, labelArr, 0.6, 0.001, 40)
+    # print(b)
+
+    test.HaveFun()
 
 
 
