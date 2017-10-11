@@ -1,12 +1,8 @@
-import matplotlib
 import matplotlib.pyplot as plt
+from Machine_Learning_in_acthion import regression
+from Machine_Learning_in_acthion import KNN
+from Machine_Learning_in_acthion import kMeans
 from numpy import *
-
-import KNN
-import tree
-import bayes
-import logRegres
-
 
 if __name__ == "__main__":
 
@@ -51,11 +47,40 @@ if __name__ == "__main__":
 
     # bayes.SetOfWords2Vec(myVocabList, listofPosts[0])
 
-    dataArr, labelMat = logRegres.LoadDataSet()
+    # dataArr, labelMat = logRegres.LoadDataSet()
     # weights = logRegres.GradAscent(dataArr, labelMat)
-    weights = logRegres.StocGradAscent0(array(dataArr), labelMat)
+    # weights = logRegres.StocGradAscent0(array(dataArr), labelMat)
+    # logRegres.PlotBestFit(weights)
 
-    logRegres.PlotBestFit(weights)
+    # xArr, yArr = regression.LoadDataSet('machinelearninginaction/Ch08/ex0.txt')
+    # ws = regression.StandRegres(xArr, yArr)
+    # xMat = mat(xArr)
+    # yMat = mat(yArr)
+    # yHat = xMat * ws
+    # fig = plt.figure()
+    # ax = fig.add_subplot(111)
+    # ax.scatter(xMat[:, 1].flatten().A[0], yMat.T[:, 0].flatten().A[0])
+    # xCopy = xMat.copy()
+    # xCopy.sort(0)
+    # yHat = xCopy * ws
+    # ax.plot(xCopy[:, 1], yHat)
+    # plt.show()
+
+    # abX, abY = regression.LoadDataSet('machinelearninginaction/Ch08/abalone.txt')
+    # ridgeWeights = regression.RidgeTest(abX, abY)
+    # fig = plt.figure()
+    # ax = fig.add_subplot(111)
+    # ax.plot(ridgeWeights)
+    # plt.show()
+
+    datMat = mat(kMeans.loadDataSet('machinelearninginaction/Ch10/testSet.txt'))
+    myCentroids, clustAssing = kMeans.kMeans(datMat, 4)
+    print(myCentroids)
+    print(clustAssing)
+
+
+
+
 
 
 

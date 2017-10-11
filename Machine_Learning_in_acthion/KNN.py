@@ -1,5 +1,6 @@
 import numpy as np
 import operator
+from os import listdir
 
 
 def creatDataSet():
@@ -75,9 +76,10 @@ def img2vector(filename):
             returnVect[0,32*i+j] = int(lineStr[j])
     return returnVect
 
-def handwritingClassTest():
+
+def HandwritingClassTest():
     hwLabels = []
-    trainingFileList = np.listdir('trainingDigits')           #load the training set
+    trainingFileList = listdir('machinelearninginaction/Ch02/trainingDigits')           #load the training set
     m = len(trainingFileList)
     trainingMat = np.zeros((m,1024))
     for i in range(m):
@@ -85,15 +87,15 @@ def handwritingClassTest():
         fileStr = fileNameStr.split('.')[0]     #take off .txt
         classNumStr = int(fileStr.split('_')[0])
         hwLabels.append(classNumStr)
-        trainingMat[i,:] = img2vector('trainingDigits/%s' % fileNameStr)
-    testFileList = np.listdir('testDigits')        #iterate through the test set
+        trainingMat[i,:] = img2vector('machinelearninginaction/Ch02/trainingDigits/%s' % fileNameStr)
+    testFileList = listdir('machinelearninginaction/Ch02/testDigits')        #iterate through the test set
     errorCount = 0.0
     mTest = len(testFileList)
     for i in range(mTest):
         fileNameStr = testFileList[i]
         fileStr = fileNameStr.split('.')[0]     #take off .txt
         classNumStr = int(fileStr.split('_')[0])
-        vectorUnderTest = img2vector('testDigits/%s' % fileNameStr)
+        vectorUnderTest = img2vector('machinelearninginaction/Ch02/testDigits/%s' % fileNameStr)
         classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
         print ("the classifier came back with: %d, the real answer is: %d" % (classifierResult, classNumStr))
         if (classifierResult != classNumStr): errorCount += 1.0

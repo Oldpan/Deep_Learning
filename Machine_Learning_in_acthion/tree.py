@@ -1,7 +1,6 @@
 from math import log
 import operator
 
-
 def CalShannonEnt(dataSet):
     numEntries = len(dataSet)
     labelCounts = {}

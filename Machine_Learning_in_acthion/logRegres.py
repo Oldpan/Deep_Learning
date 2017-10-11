@@ -21,11 +21,11 @@ def GradAscent(dataMatIn, classLabels):
     m,n = shape(dataMatrix)
     alpha = 0.001
     maxCycles = 500
-    weights = ones((n,1))
+    weights = ones((n, 1))
     for k in range(maxCycles):              #heavy on matrix operations
         h = Sigmoid(dataMatrix*weights)     #matrix mult
-        error = (labelMat - h)              #vector subtraction
-        weights = weights + alpha * dataMatrix.transpose()* error #matrix mult
+        error = (labelMat - h)              #vector subtraction(The right label value subtract the predicted label value)
+        weights = weights + alpha * dataMatrix.transpose()*error  #matrix mult
     return weights
 
 
@@ -38,9 +38,9 @@ def PlotBestFit(weights):
     xcord2 = []; ycord2 = []
     for i in range(n):
         if int(labelMat[i])== 1:
-            xcord1.append(dataArr[i,1]); ycord1.append(dataArr[i,2])
+            xcord1.append(dataArr[i, 1]); ycord1.append(dataArr[i, 2])
         else:
-            xcord2.append(dataArr[i,1]); ycord2.append(dataArr[i,2])
+            xcord2.append(dataArr[i, 1]); ycord2.append(dataArr[i, 2])
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.scatter(xcord1, ycord1, s=30, c='red', marker='s')
@@ -95,14 +95,15 @@ def colicTest():
         trainingSet.append(lineArr)
         trainingLabels.append(float(currLine[21]))
     trainWeights = StocGradAscent1(array(trainingSet), trainingLabels, 1000)
-    errorCount = 0; numTestVec = 0.0
+    errorCount = 0
+    numTestVec = 0.0
     for line in frTest.readlines():
         numTestVec += 1.0
         currLine = line.strip().split('\t')
         lineArr =[]
         for i in range(21):
             lineArr.append(float(currLine[i]))
-        if int(classifyVector(array(lineArr), trainWeights))!= int(currLine[21]):
+        if int(classifyVector(array(lineArr), trainWeights)) != int(currLine[21]):
             errorCount += 1
     errorRate = (float(errorCount)/numTestVec)
     print("the error rate of this test is: %f" % errorRate)
@@ -110,7 +111,8 @@ def colicTest():
 
 
 def MultiTest():
-    numTests = 10; errorSum=0.0
+    numTests = 10
+    errorSum = 0.0
     for k in range(numTests):
         errorSum += colicTest()
     print("after %d iterations the average error rate is: %f" % (numTests, errorSum/float(numTests)))
