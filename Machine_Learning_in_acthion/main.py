@@ -4,7 +4,7 @@ from Machine_Learning_in_acthion import KNN
 from Machine_Learning_in_acthion import kMeans
 from numpy import *
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
     # group, labels = KNN.creatDataSet()
     # result = KNN.classify0([0, 0], group, labels, 3)
@@ -73,10 +73,10 @@ if __name__ == "__main__":
     # ax.plot(ridgeWeights)
     # plt.show()
 
-    datMat = mat(kMeans.loadDataSet('machinelearninginaction/Ch10/testSet.txt'))
-    myCentroids, clustAssing = kMeans.kMeans(datMat, 4)
-    print(myCentroids)
-    print(clustAssing)
+    # datMat = mat(kMeans.loadDataSet('machinelearninginaction/Ch10/testSet.txt'))
+    # myCentroids, clustAssing = kMeans.kMeans(datMat, 4)
+    # print(myCentroids)
+    # print(clustAssing)
 
 
 
